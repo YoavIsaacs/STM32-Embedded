@@ -30,6 +30,7 @@
 
 
 
+
 /*
  * THIS IS FOR WHEN I MAKE THE MAIN
  * WILL CONFIGURE THE WANTED PIN AS AN OUTPUT PIN
@@ -37,12 +38,5 @@
  * &=~(1U<<7) // SETS BIT 7 TO 0
  * TOGETHER THEY WILL DEFINE THE PIN AS AN OUTPUT PIN
  */
-
-int main(void) {
-
-
-
-}
-
 
 
