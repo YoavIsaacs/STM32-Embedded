@@ -905,3 +905,6 @@ All thread infos:
 
 !ENTRY org.eclipse.cdt.dsf 4 10005 2024-11-19 14:30:50.524
 !MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.gdb.internal.ui.actions.DsfTerminateCommand$3$1@7b036d0f): Status OK: unknown code=0 OK' resulted in a rejected execution exception.
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-11-19 19:53:46.058
+!MESSAGE Indexed '0-led-toggle-to-struct' (3 sources, 0 headers) in 0.252 sec: 68 declarations; 89 references; 10 unresolved inclusions; 0 syntax errors; 31 unresolved names (16%)
