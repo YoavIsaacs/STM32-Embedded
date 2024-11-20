@@ -1,3 +1,9 @@
+// LED is at:
+// Port B
+// Pin  3
+
+#include <stdint.h>
+
 #define PERIPH_BASE			(0x40000000UL)
 
 #define AHB1_PERIPH_OFFSET	(0x00020000UL)
@@ -11,30 +17,38 @@
 #define GPIOB_OFFSET		(0x00000400UL)
 #define GPIOB_BASE			(AHB2_PERIPH_BASE + GPIOB_OFFSET)
 
-#define AHB2EN_R_OFFSET		(0x4CUL)
-#define RCC_AHB2RN_R		(*(volatile unsigned int *)(RCC_BASE + AHB2EN_R_OFFSET))
-
-#define MODE_R_OFFSET		(0x00000000UL)
-#define GPIOB_MODE_R		(*(volatile unsigned int *)(GPIOB_BASE + MODE_R_OFFSET))
-
-#define OD_R_OFFSET			(0x14UL)
-#define GPIOB_OD_R			(*(volatile unsigned int *)(GPIOB_BASE + OD_R_OFFSET))
 
 #define GPIOBEN				(1U<<1)
 #define PIN3				(1U<<3)
 #define LED_PIN				PIN3
 
+typedef struct {
+	volatile uint32_t MODER;
+	volatile uint32_t PADDING_FOR_ADDRESSES[4];
+	volatile uint32_t ODR;
+
+}GPIO_TypeDef;
+
+typedef struct {
+	volatile uint32_t PADDING_FOR_RCC[19];
+	volatile uint32_t RCC_AHB2ENR;
+}RCC_TypeDef;
+
+
+#define RCC					((RCC_TypeDef*) RCC_BASE)
+#define GPIOB				((GPIO_TypeDef*)GPIOB_BASE)
 
 
 int main(void) {
-	RCC_AHB2RN_R |= GPIOBEN;
 
-	GPIOB_MODE_R |= (1U<<6);
-	GPIOB_MODE_R &=~(1U<<7);
+	RCC->RCC_AHB2ENR |= GPIOBEN;
 
+	GPIOB->MODER |= (1U<<6);
+	GPIOB->MODER &=~(1U<<7);
 
 	while (1) {
-		GPIOB_OD_R ^= LED_PIN;
+
+		GPIOB->ODR ^= LED_PIN;
 		for (int i = 0; i < 100000; i++);
 	}
 
