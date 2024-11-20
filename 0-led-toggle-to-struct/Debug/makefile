@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := 0-led-toggle
+BUILD_ARTIFACT_NAME := 0-led-toggle-to-struct
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-0-led-toggle.elf \
+0-led-toggle-to-struct.elf \
 
 MAP_FILES += \
-0-led-toggle.map \
+0-led-toggle-to-struct.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-0-led-toggle.list \
+0-led-toggle-to-struct.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 0-led-toggle.elf secondary-outputs
+main-build: 0-led-toggle-to-struct.elf secondary-outputs
 
 # Tool invocations
-0-led-toggle.elf 0-led-toggle.map: $(OBJS) $(USER_OBJS) D:\Embedded\STM32L432KC\ Nucleo\ Board\STM32-Embedded\0-led-toggle\STM32L432KCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "0-led-toggle.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Embedded\STM32L432KC Nucleo Board\STM32-Embedded\0-led-toggle\STM32L432KCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="0-led-toggle.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+0-led-toggle-to-struct.elf 0-led-toggle-to-struct.map: $(OBJS) $(USER_OBJS) D:\Embedded\STM32L432KC\ Nucleo\ Board\STM32-Embedded\0-led-toggle-to-struct\STM32L432KCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "0-led-toggle-to-struct.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Embedded\STM32L432KC Nucleo Board\STM32-Embedded\0-led-toggle-to-struct\STM32L432KCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="0-led-toggle-to-struct.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-0-led-toggle.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "0-led-toggle.list"
+0-led-toggle-to-struct.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "0-led-toggle-to-struct.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) 0-led-toggle.elf 0-led-toggle.list 0-led-toggle.map default.size.stdout
+	-$(RM) 0-led-toggle-to-struct.elf 0-led-toggle-to-struct.list 0-led-toggle-to-struct.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

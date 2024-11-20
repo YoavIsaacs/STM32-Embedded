@@ -17,6 +17,14 @@
 #define GPIOB_OFFSET		(0x00000400UL)
 #define GPIOB_BASE			(AHB2_PERIPH_BASE + GPIOB_OFFSET)
 
+#define AHB2EN_R_OFFSET		(0x4CUL)
+#define RCC_AHB2RN_R		(*(volatile unsigned int *)(RCC_BASE + AHB2EN_R_OFFSET))
+
+#define MODE_R_OFFSET		(0x00000000UL)
+#define GPIOB_MODE_R		(*(volatile unsigned int *)(GPIOB_BASE + MODE_R_OFFSET))
+
+#define OD_R_OFFSET			(0x14UL)
+#define GPIOB_OD_R			(*(volatile unsigned int *)(GPIOB_BASE + OD_R_OFFSET))
 
 #define GPIOBEN				(1U<<1)
 #define PIN3				(1U<<3)
@@ -30,8 +38,8 @@ typedef struct {
 }GPIO_TypeDef;
 
 typedef struct {
-	volatile uint32_t PADDING_FOR_RCC[19];
-	volatile uint32_t RCC_AHB2ENR;
+	volatile uint32_t PADDING_FOR_RCC[15];
+	volatile uint32_t RCC_AHB1ENR;
 }RCC_TypeDef;
 
 
@@ -39,15 +47,29 @@ typedef struct {
 #define GPIOB				((GPIO_TypeDef*)GPIOB_BASE)
 
 
-int main(void) {
+/*
+ * THIS IS FOR WHEN I MAKE THE MAIN
+ * WILL CONFIGURE THE WANTED PIN AS AN OUTPUT PIN
+ * (1U<<6) // SETS BIT 6 TO 1
+ * &=~(1U<<7) // SETS BIT 7 TO 0
+ * TOGETHER THEY WILL DEFINE THE PIN AS AN OUTPUT PIN
+ */
 
-	RCC->RCC_AHB2ENR |= GPIOBEN;
+int main(void) {
+	// 1. Enable clock
+//	RCC_AHB2RN_R |= GPIOBEN;
+
+	RCC->RCC_AHB1ENR |= GPIOENB;
+
+	// 2. Set PB3 as output
+
 
 	GPIOB->MODER |= (1U<<6);
 	GPIOB->MODER &=~(1U<<7);
 
 	while (1) {
-
+		// 3. Set PB3 as high
+//		GPIOB_OD_R ^= LED_PIN;
 		GPIOB->ODR ^= LED_PIN;
 		for (int i = 0; i < 100000; i++);
 	}
