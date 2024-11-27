@@ -1168,3 +1168,21 @@ java.io.FileNotFoundException: D:\Embedded\STM32L432KC Nucleo Board\STM32-Embedd
 
 !ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-11-20 14:36:39.905
 !MESSAGE Existing sessions are:
+!SESSION 2024-11-27 22:36:19.377 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_GB
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2024-11-27 22:36:30.148
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-11-27 22:36:49.460
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-11-27 22:36:49.471
+!MESSAGE Log4j2 initialized with config file D:\Embedded\STM32L432KC Nucleo Board\STM32-Embedded\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-11-27 22:36:59.724
+!MESSAGE Started RMI Server, listening on port 41337
