@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:0-led-toggle Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:0-led-toggle-to-struct Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:0-led-toggle Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:0-led-toggle-to-struct Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:8-bit-counter Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:0-led-toggle\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:0-led-toggle\ Debug/activeLaunchTarget=null\:---
